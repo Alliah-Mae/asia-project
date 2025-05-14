@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Youth Development Office of San Jose, Batangas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;500;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Scenic Background */
+        .scenery-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('piggy-bank-with-coin-cartoon-illustration-flat-isolated-object-free-vector.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }  
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(40, 60, 120, 0.45);
+        }
+        .landing-card {
+            background: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(67, 97, 238, 0.10), 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2.5rem 3.5rem 2rem 3.5rem;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+        .landing-logo {
+            background: rgba(67, 97, 238, 0.08);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .landing-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #3f51b5;
+            margin-bottom: 0.5rem;
+        }
+        .landing-desc {
+            color: #444;
+            font-size: 1.08rem;
+            margin-bottom: 1.5rem;
+        }
+        .services-list {
+            text-align: left;
+            margin: 0 auto 2rem auto;
+            max-width: 340px;
+        }
+        .services-list li {
+            margin-bottom: 0.5rem;
+            color: #3a0ca3;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .btn-dashboard {
+            background: linear-gradient(90deg, #3f51b5 60%, #4cc9f0 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            padding: 0.75rem 2.2rem;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.10);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .btn-dashboard:hover {
+            background: linear-gradient(90deg, #4cc9f0 0%, #3f51b5 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(67, 97, 238, 0.18);
+        }
+        @media (max-width: 900px) {
+            .landing-card { max-width: 98vw; padding: 1.2rem; }
+        }
+        @media (max-width: 600px) {
+            .landing-card { padding: 1.2rem; }
+            .landing-title { font-size: 1.3rem; }
+        }
+        /* Text Content Box */
+        .landing-content {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 8px 32px rgba(67, 97, 238, 0.10), 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 1.5rem;
+            padding: 2.5rem 3.5rem 2rem 3.5rem;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+            z-index: 2;
+            margin-left: 0;
+            animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) 0.1s both;
+        }
+        @media (max-width: 900px) {
+            .landing-content { max-width: 98vw; padding: 1.2rem; margin-left:0; }
+        }
+        @media (max-width: 600px) {
+            .landing-content { padding: 1.2rem; }
+            .landing-headline { font-size: 2rem !important; }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: none; }
+        }
+        .landing-headline {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 4px 24px rgba(40,60,120,0.25), 0 1px 2px #2228;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+        .landing-subtitle {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #e0e7ff;
+            text-shadow: 0 2px 8px rgba(40,60,120,0.18);
+            margin-bottom: 1.2rem;
+        }
+        .landing-desc {
+            color: #f3f3f3;
+            font-size: 1.08rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(40,60,120,0.10);
+        }
+        .btn-dashboard {
+            background: linear-gradient(90deg, #3f51b5 60%, #4cc9f0 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            padding: 0.75rem 2.2rem;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.10);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .btn-dashboard:hover {
+            background: linear-gradient(90deg, #4cc9f0 0%, #3f51b5 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(67, 97, 238, 0.18);
+        }
+    </style>
+</head>
+<body>
+    <div class="scenery-bg"></div>
+    <div class="bg-overlay"></div>
+   
+    <!-- Main Content -->
+    <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height:80vh; z-index:2; position:relative;">
+        <div class="landing-content">
+            <h1 class="landing-headline">
+                Empowering the Youth of San Jose, Batangas
+            </h1>
+            <div class="landing-subtitle">
+                Local Youth Development Office
+            </div>
+            <div class="landing-desc">
+                We are dedicated to nurturing the potential of young people in our community. Through leadership training, skills development, community projects, and advocacy, we help shape the next generation of leaders and changemakers. Join us in building a brighter future for San Jose's youth!
+            </div>
+            <a href="dashboard.html" class="btn btn-dashboard">Go to Dashboard</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

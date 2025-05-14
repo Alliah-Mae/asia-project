@@ -1,0 +1,39 @@
+name: Deploy to Production
+on:
+  push: 
+    branches:
+    - main
+
+# Add explicit permissions
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'  # Using a stable version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the Project 
+        run: npm run build
+
+      - name: List build output
+        run: ls -la ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
