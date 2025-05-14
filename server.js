@@ -1,9 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const apiRoutes = require('./routes/api.routes');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import apiRoutes from './routes/api.routes.js';
+import path from 'path';
 
 dotenv.config();  // Loads environment variables from .env
 
@@ -15,14 +15,12 @@ app.use(bodyParser.json());  // Parses incoming requests with JSON payloads
 app.use('/api', apiRoutes);  // Route handling
 
 // Serve static files (HTML, CSS, JS, etc.)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Route for the root URL to serve the index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
-
-
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

@@ -1,11 +1,12 @@
-const express = require('express');
-const db = require('../config/db.config.js'); // Import the database connection
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const path = require('path');
-const app = express();
+import express from 'express';
+import db from '../config/db.config.js'; // Correct default import // Import the database connection
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import path from 'path';
+
 dotenv.config();  // Loads environment variables from .env
+
 const router = express.Router();
 
 // Route to get survey attendance data based on 'attended_kk' being 'Yes'
@@ -25,7 +26,7 @@ router.get('/survey-attendance', (req, res) => {
     });
 });
 
-
 // You can add more routes for other types of data if needed
 
-module.exports = router;
+// Use export default to export the router
+export default router;
