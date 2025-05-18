@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "chart.js": "^4.4.9",
     "countup.js": "^2.8.0",
     "dotenv": "^16.5.0",
     "mysql2": "^3.14.1",

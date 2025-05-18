@@ -183,38 +183,118 @@
             color: #666;
             font-size: 0.9rem;
         }
+
+        /* Navbar Gradient Background */
+.navbar-gradient {
+  background: linear-gradient(90deg, #3f51b5 0%, #4cc9f0 100%);
+  transition: background-color 0.3s ease;
+}
+
+/* Sticky shadow on scroll */
+.navbar-gradient.sticky-top {
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+/* Navbar brand styles */
+.nav-logo {
+  transition: transform 0.3s ease;
+}
+
+.nav-brand-text {
+  color: #fff;
+  letter-spacing: -0.5px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+/* Nav links styling */
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hover and focus states for nav links */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.4);
+}
+
+/* Active nav link */
+.navbar-nav .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(67, 97, 238, 0.7);
+}
+
+/* Navbar toggler customization */
+.navbar-toggler {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.7));
+}
+
+/* Navbar toggler icon */
+.navbar-toggler-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(102%) contrast(102%);
+  transition: filter 0.3s ease;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon,
+.navbar-toggler:focus .navbar-toggler-icon {
+  filter: invert(100%) sepia(55%) saturate(500%) hue-rotate(190deg) brightness(120%) contrast(110%);
+}
+
+/* Responsive adjustments for brand text */
+@media (max-width: 576px) {
+  .nav-brand-text {
+    font-size: 1.1rem;
+  }
+}
+
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-3">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="13" width="4" height="8" rx="2" fill="#fff" fill-opacity="0.9"/>
-            <rect x="9" y="9" width="4" height="12" rx="2" fill="#fff" fill-opacity="0.7"/>
-            <rect x="15" y="3" width="4" height="18" rx="2" fill="#fff" fill-opacity="0.5"/>
-          </svg>
-          <span class="ms-2 fw-bold">Youth Survey Dashboard</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="dashboard.html">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="report.html">Report</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-gradient sticky-top shadow-sm mb-4">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-logo">
+        <rect x="3" y="13" width="4" height="8" rx="2" fill="white" fill-opacity="0.9"/>
+        <rect x="9" y="9" width="4" height="12" rx="2" fill="white" fill-opacity="0.7"/>
+        <rect x="15" y="3" width="4" height="18" rx="2" fill="white" fill-opacity="0.5"/>
+      </svg>
+      <span class="fw-bold fs-4 nav-brand-text">Youth Survey Dashboard</span>
+    </a>
+    <button
+      class="navbar-toggler border-0 p-2"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-3 fs-6 fw-semibold">
+        <li class="nav-item">
+          <a class="nav-link active px-3 py-2 rounded" aria-current="page" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 py-2 rounded" href="report.html">Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 py-2 rounded" href="about.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 
 
@@ -335,16 +415,23 @@
 
         // Function to fetch data from the backend API
         async function fetchData() {
-            try {
-                const response = await fetch('/api/survey-attendance');
-                const data = await response.json();
-                console.log("Fetched data:", data); // Debugging line
-                return data;
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                return [];
-            }
-        }
+    try {
+        const response = await fetch('/api/survey-attendance'); // API endpoint
+        const data = await response.json();
+        console.log("Fetched data:", data); // Logs the fetched data
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return [];
+    }
+}
+
+async function initializeCharts() {
+    const data = await fetchData();  // Ensure this function is being called
+    renderChartsAndStats(data);      // Pass the fetched data to renderChartsAndStats
+}
+
+
 
         // Function to hide loaders
         function hideLoaders() {
