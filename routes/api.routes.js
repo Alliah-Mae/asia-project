@@ -8,7 +8,41 @@ const handleError = (res, error, message = 'Internal Server Error') => {
   res.status(500).json({ status: 'error', message });
 };
 
-// Survey Attendance Data for Dashboard
+
+// 1. Total Youth per Barangay - FIXED
+router.get('/total-youth-barangay', async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT 
+        b.barangay_name AS barangay,
+        COUNT(r.id) AS total_youth
+      FROM barangays b
+      LEFT JOIN respondents r ON r.barangay = b.barangay_name
+      GROUP BY b.barangay_name
+      ORDER BY total_youth DESC
+    `);
+    res.json({ status: 'success', data: rows });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+
+// 2. Age Group Distribution - GOOD
+router.get('/age-group-distribution', async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT age_group, COUNT(*) AS total
+      FROM respondents
+      GROUP BY age_group
+    `);
+    res.json({ status: 'success', data: rows });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+// 3. Survey Attendance Data for Dashboard - GOOD
 router.get('/survey-attendance', async (req, res) => {
   try {
     const [rows] = await db.query(`
@@ -25,54 +59,7 @@ router.get('/survey-attendance', async (req, res) => {
   }
 });
 
-// 1. Total Youth per Barangay
-router.get('/total-youth-barangay', async (req, res) => {
-  try {
-    const [rows] = await db.query(`
-      SELECT barangay, COUNT(*) AS total_youth
-      FROM respondents
-      GROUP BY barangay
-    `);
-    res.json({ status: 'success', data: rows });
-  } catch (error) {
-    handleError(res, error);
-  }
-});
-
-// 2. Age Group Distribution
-router.get('/age-group-distribution', async (req, res) => {
-  try {
-    const [rows] = await db.query(`
-      SELECT age_group, COUNT(*) AS total
-      FROM respondents
-      GROUP BY age_group
-    `);
-    res.json({ status: 'success', data: rows });
-  } catch (error) {
-    handleError(res, error);
-  }
-});
-
-// 3. Gender Distribution
-router.get('/gender-distribution', async (req, res) => {
-  try {
-    const [rows] = await db.query(`
-      SELECT 
-        CASE 
-          WHEN first_name IN (SELECT first_name FROM respondents WHERE sex_assigned_by_birth = 'Male') THEN 'Male'
-          ELSE 'Female'
-        END AS gender,
-        COUNT(*) AS total
-      FROM respondents
-      GROUP BY gender
-    `);
-    res.json({ status: 'success', data: rows });
-  } catch (error) {
-    handleError(res, error);
-  }
-});
-
-// 4. Educational Attainment Breakdown
+// 4. Educational Attainment Breakdown - GOOD
 router.get('/education-level', async (req, res) => {
   try {
     const [rows] = await db.query(`
@@ -86,7 +73,7 @@ router.get('/education-level', async (req, res) => {
   }
 });
 
-// 5. Employment Status
+// 5. Employment Status - GOOD
 router.get('/employment-status', async (req, res) => {
   try {
     const [rows] = await db.query(`
@@ -100,7 +87,7 @@ router.get('/employment-status', async (req, res) => {
   }
 });
 
-// 6. KK Assembly Attendance by Category
+// 6. KK Assembly Attendance by Category - GOOD
 router.get('/kk-attendance', async (req, res) => {
   try {
     const [rows] = await db.query(`
@@ -115,7 +102,7 @@ router.get('/kk-attendance', async (req, res) => {
   }
 });
 
-// 7. Participation in Programs
+// 7. Participation in Programs - GOOD
 router.get('/program-participation', async (req, res) => {
   try {
     const [rows] = await db.query(`
@@ -123,7 +110,7 @@ router.get('/program-participation', async (req, res) => {
         CASE 
           WHEN attended_kk = 'Yes' THEN 'KK Assembly'
           WHEN kk_assembly = 'Yes' THEN 'KK Assembly'
-          ELSE 'Other Programs'
+          ELSE 'Did not attend'
         END AS activity_name,
         COUNT(DISTINCT respondent_id) AS participants
       FROM survey_data
