@@ -1,0 +1,32 @@
+API Documentation for Youth Governance Analytics API
+Base URL: /api
+
+1. GET /total-youth-barangay
+Description:
+Returns the total number of youth respondents per barangay, including barangays with no registered youth. This helps identify youth distribution across communities, enabling targeted outreach and resource allocation by local youth development offices.
+
+2. GET /age-group-distribution
+Description:
+Provides counts of youth respondents grouped into predefined age brackets. This data supports understanding the age demographics of the youth population to tailor age-appropriate programs and interventions.
+
+3. GET /survey-attendance
+Description:
+Aggregates survey attendance by youth category (e.g., students, employed youth). It reflects engagement levels in governance activities and surveys, assisting in evaluating inclusivity and outreach effectiveness.
+
+4. GET /education-level
+Description:
+Returns counts of respondents by highest educational attainment. This enables identification of educational gaps, supporting planning of scholarship and skills development initiatives.
+
+5. GET /employment-status
+Description:
+Provides the employment status distribution of youth respondents, including employed and unemployed categories. This insight aids in designing employment readiness programs and assessing local labor market needs.
+
+6. GET /kk-attendance
+Description:
+Reports attendance counts at the Katipunan ng Kabataan (KK) Assembly by youth category, serving as a measure of civic participation and youth engagement in governance.
+
+7. GET /program-participation
+Description:
+Summarizes youth participation in programs, distinguishing between those who attended the KK Assembly and those who did not. This helps monitor overall program engagement and identify participation gaps.
+
+This API provides essential descriptive analytics to guide evidence-based youth development strategies within the Municipality of San Jose, Batangas.
