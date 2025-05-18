@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Local Youth Development Office</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(120deg, #e3f2fd 0%, #f8fafc 100%);
+            margin: 0;
+        }
+        .main-content {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .about-card {
+            background: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(67, 97, 238, 0.10), 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+        }
+        .about-logo {
+            background: rgba(67, 97, 238, 0.08);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .about-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #3f51b5;
+            margin-bottom: 0.5rem;
+        }
+        .about-section-title {
+            color: #4cc9f0;
+            font-weight: 700;
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        .about-text {
+            color: #444;
+            font-size: 1.08rem;
+            margin-bottom: 0.7rem;
+        }
+        .about-contact {
+            color: #3a0ca3;
+            font-size: 1.05rem;
+            margin-top: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-dashboard {
+            background: linear-gradient(90deg, #3f51b5 60%, #4cc9f0 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            padding: 0.75rem 2.2rem;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.10);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .btn-dashboard:hover {
+            background: linear-gradient(90deg, #4cc9f0 0%, #3f51b5 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(67, 97, 238, 0.18);
+        }
+        /* Navbar Gradient Background */
+.navbar-gradient {
+  background: linear-gradient(90deg, #3f51b5 0%, #4cc9f0 100%);
+  transition: background-color 0.3s ease;
+}
+
+/* Sticky shadow on scroll */
+.navbar-gradient.sticky-top {
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+/* Navbar brand styles */
+.nav-logo {
+  transition: transform 0.3s ease;
+}
+
+.nav-brand-text {
+  color: #fff;
+  letter-spacing: -0.5px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+/* Nav links styling */
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hover and focus states for nav links */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.4);
+}
+
+/* Active nav link */
+.navbar-nav .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(67, 97, 238, 0.7);
+}
+
+/* Navbar toggler customization */
+.navbar-toggler {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.7));
+}
+
+/* Navbar toggler icon */
+.navbar-toggler-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(102%) contrast(102%);
+  transition: filter 0.3s ease;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon,
+.navbar-toggler:focus .navbar-toggler-icon {
+  filter: invert(100%) sepia(55%) saturate(500%) hue-rotate(190deg) brightness(120%) contrast(110%);
+}
+
+/* Responsive adjustments for brand text */
+@media (max-width: 576px) {
+  .nav-brand-text {
+    font-size: 1.1rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-gradient sticky-top shadow-sm mb-4">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-logo">
+        <rect x="3" y="13" width="4" height="8" rx="2" fill="white" fill-opacity="0.9"/>
+        <rect x="9" y="9" width="4" height="12" rx="2" fill="white" fill-opacity="0.7"/>
+        <rect x="15" y="3" width="4" height="18" rx="2" fill="white" fill-opacity="0.5"/>
+      </svg>
+      <span class="fw-bold fs-4 nav-brand-text">Youth Survey Dashboard</span>
+    </a>
+    <button
+      class="navbar-toggler border-0 p-2"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-3 fs-6 fw-semibold">
+        <li class="nav-item">
+          <a class="nav-link px-3 py-2 rounded"  href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 py-2 rounded" href="report.html">Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active px-3 py-2 rounded" aria-current="page" href="about.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="main-content">
+      <div class="about-card">
+        <div class="about-logo">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="27" cy="27" r="27" fill="#4cc9f0" fill-opacity="0.15"/>
+            <circle cx="27" cy="20" r="7" fill="#3f51b5"/>
+            <rect x="16" y="32" width="22" height="8" rx="4" fill="#3f51b5" fill-opacity="0.8"/>
+            <rect x="22" y="28" width="10" height="10" rx="5" fill="#4cc9f0"/>
+          </svg>
+        </div>
+        <div class="about-title">About the Local Youth Development Office</div>
+        <div class="about-section-title">Mission</div>
+        <div class="about-text">
+          To empower, inspire, and support the youth through inclusive programs, leadership opportunities, and community engagement, fostering holistic growth and active citizenship.
+        </div>
+        <div class="about-section-title">Vision</div>
+        <div class="about-text">
+          A dynamic, united, and progressive youth sector that leads positive change and development in the community.
+        </div>
+        <div class="about-section-title">Contact Us</div>
+        <div class="about-contact">
+          <strong>Email:</strong> iahmae46@gmail.com<br>
+          <strong>Phone:</strong> (012) 345-6789<br>
+        </div>
+        <a href="dashboard.html" class="btn btn-dashboard">Back to Dashboard</a>
+      </div>
+    </div>
+</body>
+</html>
