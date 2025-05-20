@@ -1,8 +1,4 @@
-Sure! Here is the same content in plain text format:
-
----
-
-Youth Governance Analytics API
+Youth Governance 
 
 Overview
 This API delivers descriptive analytics for the Youth Governance System of the Municipality of San Jose, Batangas. It provides endpoints to retrieve summarized youth demographic data, survey attendance, program participation, and other key indicators essential for local youth development planning.
