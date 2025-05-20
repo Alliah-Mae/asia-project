@@ -24,8 +24,8 @@ Prerequisites
 Setup Steps
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/youth-governance-api.git
-   cd youth-governance-api
+   git clone https://github.com/Alliah-Mae/asia-project.git
+   cd asia-project
 
 2. Install dependencies:
    npm install
